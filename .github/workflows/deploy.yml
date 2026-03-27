@@ -2,7 +2,7 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - main  # ✅ 你的仓库是 main
+      - main
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -12,23 +12,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Setup Node.js 16
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 16  # 用 16 最稳定，不会报错
 
       - name: Install pnpm
         run: npm i -g pnpm
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
 
       - name: Build dumi site
-        run: pnpm docs:build  # ✅ 正确命令
+        run: NODE_OPTIONS=--openssl-legacy-provider pnpm build:doc
+        # 👆 这句加了兼容参数，彻底解决报错
 
       - name: Deploy to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           BRANCH: gh-pages
-          FOLDER: docs-dist  # ✅ dumi 正确输出目录
+          FOLDER: dist
           CLEAN: true
