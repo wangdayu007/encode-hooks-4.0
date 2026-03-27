@@ -12,20 +12,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js 16
+      - name: Setup Node.js 18
         uses: actions/setup-node@v4
         with:
-          node-version: 16  # 用 16 最稳定，不会报错
+          node-version: 18
 
       - name: Install pnpm
-        run: npm i -g pnpm
+        run: npm i -g pnpm@8.15.8
 
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
       - name: Build dumi site
         run: NODE_OPTIONS=--openssl-legacy-provider pnpm build:doc
-        # 👆 这句加了兼容参数，彻底解决报错
 
       - name: Deploy to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
