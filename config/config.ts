@@ -6,9 +6,9 @@ export default {
     type: 'none',
     exclude: [],
   },
+  // 👇 只需要加这两行！！！ 复制粘贴
   base: '/encode-hooks-4.0/',
   publicPath: '/encode-hooks-4.0/',
-  history: { type: 'hash' },
   extraBabelPlugins: [
     [
       'babel-plugin-import',
@@ -21,8 +21,8 @@ export default {
   ],
   title: 'Mick Wang 个人站点 encode hooks',
   mode: 'site',
-  favicon: '/encode-hooks/avatar.png',
-  logo: '/encode-hooks/avatar.png',
+  favicon: '/encode-hooks-4.0/avatar.png',
+  logo: '/encode-hooks-4.0/avatar.png',
   dynamicImport: {},
   manifest: {},
   hash: true,
@@ -38,7 +38,7 @@ export default {
       rel: 'stylesheet',
       href: 'https://unpkg.com/@alifd/theme-design-pro@0.6.2/dist/next-noreset.min.css',
     },
-    { rel: 'stylesheet', href: '/style.css' },
+    { rel: 'stylesheet', href: '/encode-hooks-4.0/style.css' },
   ],
   navs: [
     { title: '指南', path: '/guide' },
