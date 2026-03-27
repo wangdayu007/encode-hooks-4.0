@@ -1,7 +1,7 @@
 ---
 title: 首页
 hero:
-  image: /encode-hooks/short-logo.png
+  image: /encode-hooks-4.0/short-logo.png
   desc: Mick Wang 个人站点 React 业务 Hooks
   actions:
     - text: 指南
